@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.picIcon = new System.Windows.Forms.PictureBox();
-            this.labCloud = new System.Windows.Forms.Label();
             this.Cloud = new System.Windows.Forms.Label();
             this.labPressure = new System.Windows.Forms.Label();
             this.Pressure = new System.Windows.Forms.Label();
@@ -46,7 +45,10 @@
             this.TBCity = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.labWeatherPrompt = new System.Windows.Forms.Label();
+            this.labCloud = new System.Windows.Forms.Label();
+            this.labTemp = new System.Windows.Forms.Label();
             this.Temperature = new System.Windows.Forms.Label();
+            this.toggleCtoF = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picIcon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,19 +62,6 @@
             this.picIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picIcon.TabIndex = 31;
             this.picIcon.TabStop = false;
-            // 
-            // labCloud
-            // 
-            this.labCloud.AutoSize = true;
-            this.labCloud.BackColor = System.Drawing.Color.Transparent;
-            this.labCloud.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labCloud.ForeColor = System.Drawing.SystemColors.Window;
-            this.labCloud.Location = new System.Drawing.Point(407, 328);
-            this.labCloud.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labCloud.Name = "labCloud";
-            this.labCloud.Size = new System.Drawing.Size(34, 18);
-            this.labCloud.TabIndex = 30;
-            this.labCloud.Text = "N/A";
             // 
             // Cloud
             // 
@@ -265,6 +254,31 @@
             this.labWeatherPrompt.TabIndex = 0;
             this.labWeatherPrompt.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // labCloud
+            // 
+            this.labCloud.AutoSize = true;
+            this.labCloud.BackColor = System.Drawing.Color.Transparent;
+            this.labCloud.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labCloud.ForeColor = System.Drawing.SystemColors.Window;
+            this.labCloud.Location = new System.Drawing.Point(407, 328);
+            this.labCloud.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labCloud.Name = "labCloud";
+            this.labCloud.Size = new System.Drawing.Size(34, 18);
+            this.labCloud.TabIndex = 33;
+            this.labCloud.Text = "N/A";
+            // 
+            // labTemp
+            // 
+            this.labTemp.AutoSize = true;
+            this.labTemp.BackColor = System.Drawing.Color.Transparent;
+            this.labTemp.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labTemp.ForeColor = System.Drawing.SystemColors.Window;
+            this.labTemp.Location = new System.Drawing.Point(407, 362);
+            this.labTemp.Name = "labTemp";
+            this.labTemp.Size = new System.Drawing.Size(34, 18);
+            this.labTemp.TabIndex = 34;
+            this.labTemp.Text = "N/A";
+            // 
             // Temperature
             // 
             this.Temperature.AutoSize = true;
@@ -275,8 +289,18 @@
             this.Temperature.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Temperature.Name = "Temperature";
             this.Temperature.Size = new System.Drawing.Size(95, 18);
-            this.Temperature.TabIndex = 32;
+            this.Temperature.TabIndex = 35;
             this.Temperature.Text = "Temperature";
+            // 
+            // toggleCtoF
+            // 
+            this.toggleCtoF.Location = new System.Drawing.Point(394, 383);
+            this.toggleCtoF.Name = "toggleCtoF";
+            this.toggleCtoF.Size = new System.Drawing.Size(61, 23);
+            this.toggleCtoF.TabIndex = 36;
+            this.toggleCtoF.Text = "Change?";
+            this.toggleCtoF.UseVisualStyleBackColor = true;
+            this.toggleCtoF.Click += new System.EventHandler(this.toggleCtoF_Click);
             // 
             // Form1
             // 
@@ -285,10 +309,12 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(509, 797);
+            this.Controls.Add(this.toggleCtoF);
             this.Controls.Add(this.Temperature);
+            this.Controls.Add(this.labTemp);
+            this.Controls.Add(this.labCloud);
             this.Controls.Add(this.labWeatherPrompt);
             this.Controls.Add(this.picIcon);
-            this.Controls.Add(this.labCloud);
             this.Controls.Add(this.Cloud);
             this.Controls.Add(this.labPressure);
             this.Controls.Add(this.Pressure);
@@ -316,7 +342,6 @@
         #endregion
 
         private System.Windows.Forms.PictureBox picIcon;
-        private System.Windows.Forms.Label labCloud;
         private System.Windows.Forms.Label Cloud;
         private System.Windows.Forms.Label labPressure;
         private System.Windows.Forms.Label Pressure;
@@ -332,7 +357,10 @@
         private System.Windows.Forms.TextBox TBCity;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labWeatherPrompt;
+        private System.Windows.Forms.Label labCloud;
+        private System.Windows.Forms.Label labTemp;
         private System.Windows.Forms.Label Temperature;
+        private System.Windows.Forms.Button toggleCtoF;
     }
 }
 

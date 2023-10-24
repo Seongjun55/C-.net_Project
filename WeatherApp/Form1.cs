@@ -19,7 +19,7 @@ namespace WeatherApp
             InitializeComponent();
         }
         string APIKey = "8755aca3fcad3f0fa15174a40f901202";
-
+        bool changeUnit = true;
         private void btnSearch_Click(object sender, EventArgs e)
         {
             getWeather();
@@ -28,9 +28,11 @@ namespace WeatherApp
         {
             using (WebClient web = new WebClient())
             {
+                //Setting up which unit should be used.
+                string tempUnit = changeUnit ? "metric" : "imperial";
                 //Initialse variable and use the URL for weather data retrieval
                 //Uses city input from user and API key directly from openweathermap
-                string url = string.Format("https://api.openweathermap.org/data/2.5/weather?q={0}&appid={1}", TBCity.Text, APIKey);
+                string url = string.Format("https://api.openweathermap.org/data/2.5/weather?q={0}&appid={1}&units={2}", TBCity.Text, APIKey, tempUnit);
                 // Download JSON data from the API
                 var json = web.DownloadString(url);
                 // Deserialize the JSON data into WeatherInfo.root object
@@ -38,13 +40,13 @@ namespace WeatherApp
                 // Update the UI elements with weather information
                 picIcon.ImageLocation = "https://openweathermap.org/img/w/" + Info.weather[0].icon + ".png";
                 labCondition.Text = Info.weather[0].main;
-                labDetails.Text = Info.weather[0].description;
-                labSunset.Text = convertDateTime(Info.sys.sunset).ToShortTimeString();
-                labSunrise.Text = convertDateTime(Info.sys.sunrise).ToShortTimeString();
-                labWindSpeed.Text = Info.wind.speed.ToString();
-                labCloud.Text = Info.clouds.all.ToString();
-                labPressure.Text = Info.main.pressure.ToString();
-
+                //labDetails.Text = Info.weather[0].description;
+                //labSunset.Text = convertDateTime(Info.sys.sunset).ToShortTimeString();
+                //labSunrise.Text = convertDateTime(Info.sys.sunrise).ToShortTimeString();
+                //labWindSpeed.Text = Info.wind.speed.ToString();
+                //labCloud.Text = Info.clouds.all.ToString();
+                //labPressure.Text = Info.main.pressure.ToString();
+                labTemp.Text = Info.main.temp.ToString();
                 // Call the method to display weather prompts
                 weatherPrompts(Info.weather[0].main);
             }
@@ -86,6 +88,12 @@ namespace WeatherApp
             return day;
         }
 
-
+        private void toggleCtoF_Click(object sender, EventArgs e)
+        {
+            //toggle between C and F unit
+            changeUnit = !changeUnit;
+            //Refresh weather data to display the change in unit
+            getWeather();
+        }
     }
 }
