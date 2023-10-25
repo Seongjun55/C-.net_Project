@@ -42,13 +42,14 @@
             this.labDetails = new System.Windows.Forms.Label();
             this.labCondition = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.TBCity = new System.Windows.Forms.TextBox();
+            this.TypeCity = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.labWeatherPrompt = new System.Windows.Forms.Label();
             this.labCloud = new System.Windows.Forms.Label();
             this.labTemp = new System.Windows.Forms.Label();
             this.Temperature = new System.Windows.Forms.Label();
             this.toggleCtoF = new System.Windows.Forms.Button();
+            this.btnViewHistory = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picIcon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -208,13 +209,13 @@
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // TBCity
+            // TypeCity
             // 
-            this.TBCity.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TBCity.Location = new System.Drawing.Point(212, 61);
-            this.TBCity.Name = "TBCity";
-            this.TBCity.Size = new System.Drawing.Size(197, 30);
-            this.TBCity.TabIndex = 17;
+            this.TypeCity.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TypeCity.Location = new System.Drawing.Point(212, 61);
+            this.TypeCity.Name = "TypeCity";
+            this.TypeCity.Size = new System.Drawing.Size(197, 30);
+            this.TypeCity.TabIndex = 17;
             // 
             // label1
             // 
@@ -292,6 +293,16 @@
             this.toggleCtoF.UseVisualStyleBackColor = false;
             this.toggleCtoF.Click += new System.EventHandler(this.toggleCtoF_Click);
             // 
+            // btnViewHistory
+            // 
+            this.btnViewHistory.Location = new System.Drawing.Point(564, 32);
+            this.btnViewHistory.Name = "btnViewHistory";
+            this.btnViewHistory.Size = new System.Drawing.Size(75, 90);
+            this.btnViewHistory.TabIndex = 37;
+            this.btnViewHistory.Text = "View Search History";
+            this.btnViewHistory.UseVisualStyleBackColor = true;
+            this.btnViewHistory.Click += new System.EventHandler(this.btnViewHistory_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -299,6 +310,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(679, 920);
+            this.Controls.Add(this.btnViewHistory);
             this.Controls.Add(this.toggleCtoF);
             this.Controls.Add(this.Temperature);
             this.Controls.Add(this.labTemp);
@@ -317,7 +329,7 @@
             this.Controls.Add(this.labDetails);
             this.Controls.Add(this.labCondition);
             this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.TBCity);
+            this.Controls.Add(this.TypeCity);
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
             this.Name = "Form1";
@@ -343,13 +355,14 @@
         private System.Windows.Forms.Label labDetails;
         private System.Windows.Forms.Label labCondition;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.TextBox TBCity;
+        private System.Windows.Forms.TextBox TypeCity;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labWeatherPrompt;
         private System.Windows.Forms.Label labCloud;
         private System.Windows.Forms.Label labTemp;
         private System.Windows.Forms.Label Temperature;
         private System.Windows.Forms.Button toggleCtoF;
+        private System.Windows.Forms.Button btnViewHistory;
     }
 }
 
