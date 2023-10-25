@@ -14,6 +14,7 @@ namespace WeatherApp
 {
     public partial class Form1 : Form
     {
+        List<String> searchHistory = new List<String>();
         public Form1()
         {
             InitializeComponent();
@@ -23,6 +24,8 @@ namespace WeatherApp
         private void btnSearch_Click(object sender, EventArgs e)
         {
             getWeather();
+            // Call the method to add the search to the history
+            AddToSearchHistory(TBCity.Text);
         }
         void getWeather()
         {
@@ -51,6 +54,8 @@ namespace WeatherApp
                     labTemp.Text = Info.main.temp.ToString();
                     // Call the method to display weather prompts
                     weatherPrompts(Info.weather[0].main);
+
+
                 }
                 catch (WebException ex) when ((ex.Response as HttpWebResponse)?.StatusCode == HttpStatusCode.NotFound)
                 {
@@ -108,5 +113,37 @@ namespace WeatherApp
             //Refresh weather data to display the change in unit
             getWeather();
         }
+
+
+        //Update the listBox item to display the user's search history
+        private void AddToSearchHistory(string searchedCity)
+        {
+            searchHistory.Insert(0, searchedCity);
+            lstBoxSearchHistory.DataSource = null;
+            lstBoxSearchHistory.DataSource = searchHistory;
+        }
+
+        private List<string> GetSearchHistory()
+        {
+            return searchHistory;
+        }
+
+        private void ClearSearchHistory()
+        {
+            searchHistory.Clear();
+            lstBoxSearchHistory.DataSource = null;
+        }
+
+
+
+
+        private void lstBoxSearchHistory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstBoxSearchHistory.SelectedIndex != -1)
+            {
+                TBCity.Text = lstBoxSearchHistory.SelectedItem.ToString();
+            }
+        }
+
     }
 }
