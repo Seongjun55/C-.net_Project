@@ -32,13 +32,17 @@ namespace WeatherApp
                 {
                     //Setting up which unit should be used.
                     string tempUnit = changeUnit ? "metric" : "imperial";
+
                     //Initialse variable and use the URL for weather data retrieval
                     //Uses city input from user and API key directly from openweathermap
                     string url = string.Format("https://api.openweathermap.org/data/2.5/weather?q={0}&appid={1}&units={2}", TypeCity.Text, APIKey, tempUnit);
+
                     // Download JSON data from the API
                     var json = web.DownloadString(url);
+
                     // Deserialize the JSON data into WeatherInfo.root object
                     WeatherInfo.root Info = JsonConvert.DeserializeObject<WeatherInfo.root>(json);
+
                     // Update the UI elements with weather information
                     picIcon.ImageLocation = "https://openweathermap.org/img/w/" + Info.weather[0].icon + ".png";
                     labCondition.Text = Info.weather[0].main;
@@ -51,7 +55,14 @@ namespace WeatherApp
                     labTemp.Text = Info.main.temp.ToString();
                     // Call the method to display weather prompts
                     weatherPrompts(Info.weather[0].main);
+
+                    if (!searchHistory.Contains(TypeCity.Text))
+                    {
+                        searchHistory.Add(TypeCity.Text);
+                    }
                 }
+
+                // Checking valid city from API
                 catch (WebException ex) when ((ex.Response as HttpWebResponse)?.StatusCode == HttpStatusCode.NotFound)
                 {
                     // City not found on the API's server
@@ -115,11 +126,7 @@ namespace WeatherApp
         // Add the searched city to this list
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            //Avoiding Duplicate Entries
-            if (!searchHistory.Contains(TypeCity.Text))
-            {
-                searchHistory.Add(TypeCity.Text);
-            }
+           
             getWeather();
         }
 
