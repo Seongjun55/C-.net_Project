@@ -28,27 +28,40 @@ namespace WeatherApp
         {
             using (WebClient web = new WebClient())
             {
-                //Setting up which unit should be used.
-                string tempUnit = changeUnit ? "metric" : "imperial";
-                //Initialse variable and use the URL for weather data retrieval
-                //Uses city input from user and API key directly from openweathermap
-                string url = string.Format("https://api.openweathermap.org/data/2.5/weather?q={0}&appid={1}&units={2}", TBCity.Text, APIKey, tempUnit);
-                // Download JSON data from the API
-                var json = web.DownloadString(url);
-                // Deserialize the JSON data into WeatherInfo.root object
-                WeatherInfo.root Info = JsonConvert.DeserializeObject<WeatherInfo.root>(json);
-                // Update the UI elements with weather information
-                picIcon.ImageLocation = "https://openweathermap.org/img/w/" + Info.weather[0].icon + ".png";
-                labCondition.Text = Info.weather[0].main;
-                //labDetails.Text = Info.weather[0].description;
-                //labSunset.Text = convertDateTime(Info.sys.sunset).ToShortTimeString();
-                //labSunrise.Text = convertDateTime(Info.sys.sunrise).ToShortTimeString();
-                //labWindSpeed.Text = Info.wind.speed.ToString();
-                //labCloud.Text = Info.clouds.all.ToString();
-                //labPressure.Text = Info.main.pressure.ToString();
-                labTemp.Text = Info.main.temp.ToString();
-                // Call the method to display weather prompts
-                weatherPrompts(Info.weather[0].main);
+                try
+                {
+                    //Setting up which unit should be used.
+                    string tempUnit = changeUnit ? "metric" : "imperial";
+                    //Initialse variable and use the URL for weather data retrieval
+                    //Uses city input from user and API key directly from openweathermap
+                    string url = string.Format("https://api.openweathermap.org/data/2.5/weather?q={0}&appid={1}&units={2}", TBCity.Text, APIKey, tempUnit);
+                    // Download JSON data from the API
+                    var json = web.DownloadString(url);
+                    // Deserialize the JSON data into WeatherInfo.root object
+                    WeatherInfo.root Info = JsonConvert.DeserializeObject<WeatherInfo.root>(json);
+                    // Update the UI elements with weather information
+                    picIcon.ImageLocation = "https://openweathermap.org/img/w/" + Info.weather[0].icon + ".png";
+                    labCondition.Text = Info.weather[0].main;
+                    labDetails.Text = Info.weather[0].description;
+                    labSunset.Text = convertDateTime(Info.sys.sunset).ToShortTimeString();
+                    labSunrise.Text = convertDateTime(Info.sys.sunrise).ToShortTimeString();
+                    labWindSpeed.Text = Info.wind.speed.ToString();
+                    labCloud.Text = Info.clouds.all.ToString();
+                    labPressure.Text = Info.main.pressure.ToString();
+                    labTemp.Text = Info.main.temp.ToString();
+                    // Call the method to display weather prompts
+                    weatherPrompts(Info.weather[0].main);
+                }
+                catch (WebException ex) when ((ex.Response as HttpWebResponse)?.StatusCode == HttpStatusCode.NotFound)
+                {
+                    // City not found on the API's server
+                    MessageBox.Show("City not found. Please ensure you've entered a valid city name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    // Other general errors
+                    MessageBox.Show("An error occurred while fetching the weather data. Please try again later.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
