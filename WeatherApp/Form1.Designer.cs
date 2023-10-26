@@ -49,7 +49,7 @@
             this.labTemp = new System.Windows.Forms.Label();
             this.Temperature = new System.Windows.Forms.Label();
             this.toggleCtoF = new System.Windows.Forms.Button();
-            this.lstBoxSearchHistory = new System.Windows.Forms.ListBox();
+            this.btnViewHistory = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picIcon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -224,7 +224,7 @@
             // 
             // TBCity
             // 
-            this.TBCity.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.TBCity.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.TBCity.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.TBCity.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TBCity.Location = new System.Drawing.Point(159, 53);
@@ -309,14 +309,16 @@
             this.toggleCtoF.UseVisualStyleBackColor = false;
             this.toggleCtoF.Click += new System.EventHandler(this.toggleCtoF_Click);
             // 
-            // lstBoxSearchHistory
+            // btnViewHistory
             // 
-            this.lstBoxSearchHistory.FormattingEnabled = true;
-            this.lstBoxSearchHistory.Location = new System.Drawing.Point(1, 53);
-            this.lstBoxSearchHistory.Name = "lstBoxSearchHistory";
-            this.lstBoxSearchHistory.Size = new System.Drawing.Size(120, 95);
-            this.lstBoxSearchHistory.TabIndex = 37;
-            this.lstBoxSearchHistory.SelectedIndexChanged += new System.EventHandler(this.lstBoxSearchHistory_SelectedIndexChanged);
+            this.btnViewHistory.Location = new System.Drawing.Point(423, 28);
+            this.btnViewHistory.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnViewHistory.Name = "btnViewHistory";
+            this.btnViewHistory.Size = new System.Drawing.Size(56, 78);
+            this.btnViewHistory.TabIndex = 37;
+            this.btnViewHistory.Text = "View Search History";
+            this.btnViewHistory.UseVisualStyleBackColor = true;
+            this.btnViewHistory.Click += new System.EventHandler(this.btnViewHistory_Click);
             // 
             // Form1
             // 
@@ -325,7 +327,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(509, 797);
-            this.Controls.Add(this.lstBoxSearchHistory);
+            this.Controls.Add(this.btnViewHistory);
             this.Controls.Add(this.toggleCtoF);
             this.Controls.Add(this.Temperature);
             this.Controls.Add(this.labTemp);
@@ -371,14 +373,14 @@
         private System.Windows.Forms.Label labDetails;
         private System.Windows.Forms.Label labCondition;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.TextBox TBCity;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labWeatherPrompt;
         private System.Windows.Forms.Label labCloud;
         private System.Windows.Forms.Label labTemp;
         private System.Windows.Forms.Label Temperature;
         private System.Windows.Forms.Button toggleCtoF;
-        private System.Windows.Forms.ListBox lstBoxSearchHistory;
+        private System.Windows.Forms.Button btnViewHistory;
+        public System.Windows.Forms.TextBox TBCity;
     }
 }
 
