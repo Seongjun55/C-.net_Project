@@ -80,6 +80,7 @@ namespace WeatherApp
 
         void weatherPrompts (string labCondition)
         {
+            //Switch case, when read weather condition, display accordingly
             switch (labCondition.ToLower()) {
                 case "clear":
                     labWeatherPrompt.Text = "Beautiful day to go outside!";
@@ -106,6 +107,7 @@ namespace WeatherApp
             
             }
         }
+
         DateTime convertDateTime(long sec)
         {
             DateTime day = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc).ToLocalTime();
@@ -134,8 +136,12 @@ namespace WeatherApp
         //Open the History of Search
         private void btnViewHistory_Click(object sender, EventArgs e)
         {
+            //Create new object of history form
             SearchHistoryForm historyForm = new SearchHistoryForm(this);
+
+            //append the user's query into the list box
             historyForm.lstSearchHistory.Items.AddRange(searchHistory.ToArray());
+            //Display in new window the form
             historyForm.Show();
         }
 
