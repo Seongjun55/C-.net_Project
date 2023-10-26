@@ -55,6 +55,12 @@ namespace WeatherApp
                     labTemp.Text = Info.main.temp.ToString();
                     // Call the method to display weather prompts
                     weatherPrompts(Info.weather[0].main);
+                    string searchedCity = TBCity.Text.ToLower();
+
+                    if (!searchHistory.Contains(searchedCity))
+                    {
+                        searchHistory.Add(searchedCity);
+                    }
 
                 }
 
@@ -122,13 +128,6 @@ namespace WeatherApp
         // Add the searched city to this list
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string searchedCity = TBCity.Text.ToLower();
-
-            if (!searchHistory.Contains(searchedCity))
-            {
-                searchHistory.Add(searchedCity);
-            }
-
             getWeather();
         }
 

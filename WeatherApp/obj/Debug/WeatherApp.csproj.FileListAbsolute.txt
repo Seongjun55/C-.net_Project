@@ -12,3 +12,17 @@ E:\C-.net_Project-Deafult-New-window-Search-History-\WeatherApp\obj\Debug\Weathe
 E:\C-.net_Project-Deafult-New-window-Search-History-\WeatherApp\obj\Debug\WeatherApp.csproj.CopyComplete
 E:\C-.net_Project-Deafult-New-window-Search-History-\WeatherApp\obj\Debug\WeatherApp.exe
 E:\C-.net_Project-Deafult-New-window-Search-History-\WeatherApp\obj\Debug\WeatherApp.pdb
+C:\Users\User\source\repos\C-.net_Project\WeatherApp\bin\Debug\WeatherApp.exe.config
+C:\Users\User\source\repos\C-.net_Project\WeatherApp\bin\Debug\WeatherApp.exe
+C:\Users\User\source\repos\C-.net_Project\WeatherApp\bin\Debug\WeatherApp.pdb
+C:\Users\User\source\repos\C-.net_Project\WeatherApp\bin\Debug\Newtonsoft.Json.dll
+C:\Users\User\source\repos\C-.net_Project\WeatherApp\bin\Debug\Newtonsoft.Json.xml
+C:\Users\User\source\repos\C-.net_Project\WeatherApp\obj\Debug\WeatherApp.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\C-.net_Project\WeatherApp\obj\Debug\WeatherApp.Form1.resources
+C:\Users\User\source\repos\C-.net_Project\WeatherApp\obj\Debug\WeatherApp.Properties.Resources.resources
+C:\Users\User\source\repos\C-.net_Project\WeatherApp\obj\Debug\WeatherApp.SearchHistoryForm.resources
+C:\Users\User\source\repos\C-.net_Project\WeatherApp\obj\Debug\WeatherApp.csproj.GenerateResource.cache
+C:\Users\User\source\repos\C-.net_Project\WeatherApp\obj\Debug\WeatherApp.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\C-.net_Project\WeatherApp\obj\Debug\WeatherApp.csproj.CopyComplete
+C:\Users\User\source\repos\C-.net_Project\WeatherApp\obj\Debug\WeatherApp.exe
+C:\Users\User\source\repos\C-.net_Project\WeatherApp\obj\Debug\WeatherApp.pdb
