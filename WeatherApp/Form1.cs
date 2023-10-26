@@ -15,6 +15,7 @@ namespace WeatherApp
     public partial class Form1 : Form
     {
         List<String> searchHistory = new List<String>();
+
         public Form1()
         {
             InitializeComponent();
@@ -24,8 +25,8 @@ namespace WeatherApp
         private void btnSearch_Click(object sender, EventArgs e)
         {
             getWeather();
-            // Call the method to add the search to the history
-            AddToSearchHistory(TBCity.Text);
+
+
         }
         void getWeather()
         {
@@ -33,16 +34,14 @@ namespace WeatherApp
             {
                 try
                 {
-                    //Setting up which unit should be used.
+                    string searchedCity = TBCity.Text.ToLower();
                     string tempUnit = changeUnit ? "metric" : "imperial";
-                    //Initialse variable and use the URL for weather data retrieval
-                    //Uses city input from user and API key directly from openweathermap
-                    string url = string.Format("https://api.openweathermap.org/data/2.5/weather?q={0}&appid={1}&units={2}", TBCity.Text, APIKey, tempUnit);
-                    // Download JSON data from the API
+                    string url = string.Format("https://api.openweathermap.org/data/2.5/weather?q={0}&appid={1}&units={2}", searchedCity, APIKey, tempUnit);
                     var json = web.DownloadString(url);
-                    // Deserialize the JSON data into WeatherInfo.root object
                     WeatherInfo.root Info = JsonConvert.DeserializeObject<WeatherInfo.root>(json);
-                    // Update the UI elements with weather information
+                    // Call the method to add the search to the history
+                    addToSearchHistory(searchedCity);
+                    // Update UI elements and display weather prompts
                     picIcon.ImageLocation = "https://openweathermap.org/img/w/" + Info.weather[0].icon + ".png";
                     labCondition.Text = Info.weather[0].main;
                     labDetails.Text = Info.weather[0].description;
@@ -52,15 +51,14 @@ namespace WeatherApp
                     labCloud.Text = Info.clouds.all.ToString();
                     labPressure.Text = Info.main.pressure.ToString();
                     labTemp.Text = Info.main.temp.ToString();
-                    // Call the method to display weather prompts
                     weatherPrompts(Info.weather[0].main);
-
-
                 }
                 catch (WebException ex) when ((ex.Response as HttpWebResponse)?.StatusCode == HttpStatusCode.NotFound)
                 {
                     // City not found on the API's server
                     MessageBox.Show("City not found. Please ensure you've entered a valid city name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
                 }
                 catch (Exception ex)
                 {
@@ -69,6 +67,7 @@ namespace WeatherApp
                 }
             }
         }
+
 
         void weatherPrompts (string labCondition)
         {
@@ -116,11 +115,15 @@ namespace WeatherApp
 
 
         //Update the listBox item to display the user's search history
-        private void AddToSearchHistory(string searchedCity)
+        private void addToSearchHistory(string searchedCity)
         {
-            searchHistory.Insert(0, searchedCity);
-            lstBoxSearchHistory.DataSource = null;
-            lstBoxSearchHistory.DataSource = searchHistory;
+            //Checks for duplicates within the searched cities
+            if (!searchHistory.Contains(searchedCity))
+            {
+                searchHistory.Insert(0, searchedCity);
+                lstBoxSearchHistory.DataSource = null;
+                lstBoxSearchHistory.DataSource = searchHistory;
+            }
         }
 
         private List<string> GetSearchHistory()
@@ -128,14 +131,11 @@ namespace WeatherApp
             return searchHistory;
         }
 
-        private void ClearSearchHistory()
+        private void clearSearchHistory()
         {
             searchHistory.Clear();
             lstBoxSearchHistory.DataSource = null;
         }
-
-
-
 
         private void lstBoxSearchHistory_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -144,6 +144,5 @@ namespace WeatherApp
                 TBCity.Text = lstBoxSearchHistory.SelectedItem.ToString();
             }
         }
-
     }
 }

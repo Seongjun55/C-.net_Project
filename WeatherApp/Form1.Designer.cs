@@ -316,6 +316,7 @@
             this.lstBoxSearchHistory.Name = "lstBoxSearchHistory";
             this.lstBoxSearchHistory.Size = new System.Drawing.Size(120, 95);
             this.lstBoxSearchHistory.TabIndex = 37;
+            this.lstBoxSearchHistory.SelectedIndexChanged += new System.EventHandler(this.lstBoxSearchHistory_SelectedIndexChanged);
             // 
             // Form1
             // 
