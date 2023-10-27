@@ -18,12 +18,16 @@ namespace WeatherApp
         {
             InitializeComponent();
         }
-        string APIKey = "8755aca3fcad3f0fa15174a40f901202";
+        string APIKey = "18dede3a5891aa7f0c4f991203e451c0";
         bool changeUnit = true;
-        private void BtnSearch_Click(object sender, EventArgs e)
+        List<string> searchHistory = new List<string>();
+        private void btnSearch_Click(object sender, EventArgs e)
         {
             getWeather();
         }
+
+        double lon;
+        double lat;
         void getWeather()
         {
             using (WebClient web = new WebClient())
@@ -53,6 +57,10 @@ namespace WeatherApp
                     labCloud.Text = Info.clouds.all.ToString();
                     labPressure.Text = Info.main.pressure.ToString();
                     labTemp.Text = Info.main.temp.ToString();
+
+                    lon = Info.coord.lon;
+                    lat = Info.coord.lat;
+
                     // Call the method to display weather prompts
                     weatherPrompts(Info.weather[0].main);
                     string searchedCity = TBCity.Text.ToLower();
@@ -77,7 +85,15 @@ namespace WeatherApp
                 }
             }
         }
-
+        void getForecast()
+        {
+            using (WebClient web = new WebClient())
+            {
+                string url = string.Format("https://api.openweathermap.org/data/2.5/onecall?lat={0}&lon={1}&exclude=current,minutely,hourly,alerts&appid={2}",lat,lon,APIKey);
+                var json = web.DownloadString(url);
+                WeatherForecast.ForecastInfo ForecastInfo = JsonConvert.DeserializeObject<WeatherForecast.ForecastInfo>(json);
+            }
+        }
         void weatherPrompts (string labCondition)
         {
             //Switch case, when read weather condition, display accordingly
@@ -102,7 +118,7 @@ namespace WeatherApp
                     labWeatherPrompt.Text = "Bring an Umbrella!, light showers and fog may occur.";
                     break;
                 default:
-                    labWeatherPrompt.Text = "Where is the weather?!";
+                    labWeatherPrompt.Text = $"Weather condition '{labCondition}' not recognized!";
                     break;
             
             }
@@ -121,15 +137,6 @@ namespace WeatherApp
             //toggle between C and F unit
             changeUnit = !changeUnit;
             //Refresh weather data to display the change in unit
-            getWeather();
-        }
-
-        // Store the Seach history
-        List<string> searchHistory = new List<string>();
-
-        // Add the searched city to this list
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
             getWeather();
         }
 
