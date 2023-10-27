@@ -22,7 +22,7 @@ namespace WeatherApp
         {
             public long dt { get; set; }
             public temp temp { get; set; }
-            public List<weather> weathers { get; set; }
+            public List<weather> weather { get; set; }
         }
 
         public class ForecastInfo

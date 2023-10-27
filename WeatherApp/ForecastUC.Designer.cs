@@ -29,69 +29,60 @@
         private void InitializeComponent()
         {
             this.picWeatherIcon = new System.Windows.Forms.PictureBox();
-            this.labDate = new System.Windows.Forms.Label();
-            this.labWeatherCondition = new System.Windows.Forms.Label();
+            this.labDT = new System.Windows.Forms.Label();
+            this.labMainWeather = new System.Windows.Forms.Label();
             this.labWeatherDescription = new System.Windows.Forms.Label();
-            this.labTemperature = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picWeatherIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // picWeatherIcon
             // 
-            this.picWeatherIcon.Location = new System.Drawing.Point(16, 0);
+            this.picWeatherIcon.Location = new System.Drawing.Point(13, 21);
             this.picWeatherIcon.Name = "picWeatherIcon";
-            this.picWeatherIcon.Size = new System.Drawing.Size(114, 147);
+            this.picWeatherIcon.Size = new System.Drawing.Size(73, 82);
             this.picWeatherIcon.TabIndex = 0;
             this.picWeatherIcon.TabStop = false;
             // 
-            // labDate
+            // labDT
             // 
-            this.labDate.AutoSize = true;
-            this.labDate.Location = new System.Drawing.Point(157, 13);
-            this.labDate.Name = "labDate";
-            this.labDate.Size = new System.Drawing.Size(57, 15);
-            this.labDate.TabIndex = 1;
-            this.labDate.Text = "Sunday";
+            this.labDT.AutoSize = true;
+            this.labDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labDT.Location = new System.Drawing.Point(92, 21);
+            this.labDT.Name = "labDT";
+            this.labDT.Size = new System.Drawing.Size(64, 20);
+            this.labDT.TabIndex = 1;
+            this.labDT.Text = "Sunday";
             // 
-            // labWeatherCondition
+            // labMainWeather
             // 
-            this.labWeatherCondition.AutoSize = true;
-            this.labWeatherCondition.Location = new System.Drawing.Point(157, 88);
-            this.labWeatherCondition.Name = "labWeatherCondition";
-            this.labWeatherCondition.Size = new System.Drawing.Size(69, 15);
-            this.labWeatherCondition.TabIndex = 2;
-            this.labWeatherCondition.Text = "Condition";
+            this.labMainWeather.AutoSize = true;
+            this.labMainWeather.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labMainWeather.Location = new System.Drawing.Point(92, 52);
+            this.labMainWeather.Name = "labMainWeather";
+            this.labMainWeather.Size = new System.Drawing.Size(60, 20);
+            this.labMainWeather.TabIndex = 2;
+            this.labMainWeather.Text = "Cloudy";
             // 
             // labWeatherDescription
             // 
             this.labWeatherDescription.AutoSize = true;
-            this.labWeatherDescription.Location = new System.Drawing.Point(157, 132);
+            this.labWeatherDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labWeatherDescription.Location = new System.Drawing.Point(92, 83);
             this.labWeatherDescription.Name = "labWeatherDescription";
-            this.labWeatherDescription.Size = new System.Drawing.Size(80, 15);
+            this.labWeatherDescription.Size = new System.Drawing.Size(95, 20);
             this.labWeatherDescription.TabIndex = 3;
             this.labWeatherDescription.Text = "Description";
-            // 
-            // labTemperature
-            // 
-            this.labTemperature.AutoSize = true;
-            this.labTemperature.Location = new System.Drawing.Point(157, 51);
-            this.labTemperature.Name = "labTemperature";
-            this.labTemperature.Size = new System.Drawing.Size(86, 15);
-            this.labTemperature.TabIndex = 4;
-            this.labTemperature.Text = "Temperature";
             // 
             // ForecastUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
-            this.Controls.Add(this.labTemperature);
             this.Controls.Add(this.labWeatherDescription);
-            this.Controls.Add(this.labWeatherCondition);
-            this.Controls.Add(this.labDate);
+            this.Controls.Add(this.labMainWeather);
+            this.Controls.Add(this.labDT);
             this.Controls.Add(this.picWeatherIcon);
             this.Name = "ForecastUC";
-            this.Size = new System.Drawing.Size(565, 153);
+            this.Size = new System.Drawing.Size(220, 124);
             ((System.ComponentModel.ISupportInitialize)(this.picWeatherIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -100,10 +91,9 @@
 
         #endregion
 
-        public System.Windows.Forms.PictureBox picWeatherIcon;
-        public System.Windows.Forms.Label labDate;
-        public System.Windows.Forms.Label labWeatherCondition;
+        public System.Windows.Forms.Label labMainWeather;
         public System.Windows.Forms.Label labWeatherDescription;
-        public System.Windows.Forms.Label labTemperature;
+        public System.Windows.Forms.PictureBox picWeatherIcon;
+        public System.Windows.Forms.Label labDT;
     }
 }
