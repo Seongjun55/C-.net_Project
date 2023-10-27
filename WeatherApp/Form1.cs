@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
-using System.Net;   
+using System.Net;
 
 namespace WeatherApp
 {
@@ -24,6 +24,7 @@ namespace WeatherApp
         private void btnSearch_Click(object sender, EventArgs e)
         {
             getWeather();
+            getForecast();
         }
 
         double lon;
@@ -89,15 +90,28 @@ namespace WeatherApp
         {
             using (WebClient web = new WebClient())
             {
-                string url = string.Format("https://api.openweathermap.org/data/2.5/onecall?lat={0}&lon={1}&exclude=current,minutely,hourly,alerts&appid={2}",lat,lon,APIKey);
+                string url = string.Format("https://api.openweathermap.org/data/2.5/onecall?lat={0}&lon={1}&exclude=current,minutely,hourly,alerts&appid={2}", lat, lon, APIKey);
                 var json = web.DownloadString(url);
                 WeatherForecast.ForecastInfo ForecastInfo = JsonConvert.DeserializeObject<WeatherForecast.ForecastInfo>(json);
+
+                ForecastUC FUC;
+                for (int i = 0; i < 8; i++)
+                {
+                    FUC = new ForecastUC();
+                    FUC.picWeatherIcon.ImageLocation = "https://openweathermap.org/img/w/" + ForecastInfo.daily[i].weather[0].icon + ".png";
+                    FUC.labDT.Text = convertDateTime(ForecastInfo.daily[i].dt).DayOfWeek.ToString();
+                    FUC.labMainWeather.Text = ForecastInfo.daily[i].weather[0].main;
+                    FUC.labWeatherDescription.Text = ForecastInfo.daily[i].weather[0].description;
+
+                    FLP.Controls.Add(FUC);
+                }
             }
         }
-        void weatherPrompts (string labCondition)
+        void weatherPrompts(string labCondition)
         {
             //Switch case, when read weather condition, display accordingly
-            switch (labCondition.ToLower()) {
+            switch (labCondition.ToLower())
+            {
                 case "clear":
                     labWeatherPrompt.Text = "Beautiful day to go outside!";
                     break;
@@ -120,7 +134,7 @@ namespace WeatherApp
                 default:
                     labWeatherPrompt.Text = $"Weather condition '{labCondition}' not recognized!";
                     break;
-            
+
             }
         }
 

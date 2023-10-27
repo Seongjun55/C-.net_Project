@@ -16,29 +16,5 @@ namespace WeatherApp
         {
             InitializeComponent();
         }
-        public string Date
-        {
-            set { labDate.Text = value; }
-        }
-
-        public string WeatherCondition
-        {
-            set { labWeatherCondition.Text = value; }
-        }
-
-        public string WeatherDescription
-        {
-            set { labWeatherDescription.Text = value; }
-        }
-
-        public string WeatherIcon
-        {
-            set { picWeatherIcon.ImageLocation = value; }
-        }
-
-        public string Temperature
-        {
-            set { labTemperature.Text = value; }
-        }
     }
 }
