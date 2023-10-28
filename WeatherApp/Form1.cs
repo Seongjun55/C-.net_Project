@@ -24,6 +24,7 @@ namespace WeatherApp
         private void btnSearch_Click(object sender, EventArgs e)
         {
             getWeather();
+            getWeeklyForecast();
             getForecast();
         }
 
@@ -86,7 +87,32 @@ namespace WeatherApp
                 }
             }
         }
-        void getForecast()
+
+        void getWeeklyForecast()
+        {
+
+            using (WebClient web = new WebClient())
+            {
+                //Clears the existing forecast
+                FLPWeek.Controls.Clear();
+
+                string url = string.Format("https://api.openweathermap.org/data/2.5/onecall?lat={0}&lon={1}&exclude=current,minutely,hourly,alerts&appid={2}", lat, lon, APIKey);
+                var json = web.DownloadString(url);
+                WeatherForecast.ForecastInfo ForecastInfo = JsonConvert.DeserializeObject<WeatherForecast.ForecastInfo>(json);
+                ForecastUCWeek FUCWk;
+                for (int i = 0; i < 8; i++)
+                {
+                    FUCWk = new ForecastUCWeek();
+                    FUCWk.picWeatherIconWeekly.ImageLocation = "https://openweathermap.org/img/w/" + ForecastInfo.daily[i].weather[0].icon + ".png";
+                    FUCWk.weekDT.Text = convertDateTime(ForecastInfo.daily[i].dt).DayOfWeek.ToString();
+                    FUCWk.weekMainWeather.Text = ForecastInfo.daily[i].weather[0].main;
+                    FUCWk.weekWeatherDescription.Text = ForecastInfo.daily[i].weather[0].description;
+                    FLPWeek.Controls.Add(FUCWk);
+                }
+            }
+        }
+
+            void getForecast()
         {
             
             using (WebClient web = new WebClient())
@@ -112,6 +138,8 @@ namespace WeatherApp
                 }
             }
         }
+
+
         void weatherPrompts(string labCondition)
         {
             //Switch case, when read weather condition, display accordingly

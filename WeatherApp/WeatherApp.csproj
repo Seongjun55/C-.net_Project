@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ForecastUCWeek.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ForecastUCWeek.Designer.cs">
+      <DependentUpon>ForecastUCWeek.cs</DependentUpon>
+    </Compile>
     <Compile Include="ForecastUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -71,6 +77,9 @@
     </Compile>
     <Compile Include="WeatherForecast.cs" />
     <Compile Include="WeatherInfo.cs" />
+    <EmbeddedResource Include="ForecastUCWeek.resx">
+      <DependentUpon>ForecastUCWeek.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ForecastUC.resx">
       <DependentUpon>ForecastUC.cs</DependentUpon>
     </EmbeddedResource>

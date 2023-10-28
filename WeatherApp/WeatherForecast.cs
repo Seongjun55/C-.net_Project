@@ -15,14 +15,13 @@ namespace WeatherApp
         }
         */
 
-        /*
+
         public class daily
         {
             public long dt { get; set; }
-            public temp temp { get; set; }
             public List<weather> weather { get; set; }
         }
-        */
+
 
         public class hourly
         {
@@ -42,6 +41,7 @@ namespace WeatherApp
 
         public class ForecastInfo
         {
+            public List<daily>  daily { get; set; }
             public List<hourly> hourly { get; set; }
         }
     }

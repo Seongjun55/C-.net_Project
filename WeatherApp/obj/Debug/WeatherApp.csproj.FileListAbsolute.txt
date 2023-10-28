@@ -71,3 +71,4 @@ C:\Users\crane\source\repos\10.28.Forecast+error\WeatherApp\obj\Debug\WeatherApp
 C:\Users\crane\source\repos\10.28.Forecast+error\WeatherApp\obj\Debug\WeatherApp.csproj.CopyComplete
 C:\Users\crane\source\repos\10.28.Forecast+error\WeatherApp\obj\Debug\WeatherApp.exe
 C:\Users\crane\source\repos\10.28.Forecast+error\WeatherApp\obj\Debug\WeatherApp.pdb
+C:\Users\User\source\repos\C-.net_Project\WeatherApp\obj\Debug\WeatherApp.ForecastUCWeek.resources
