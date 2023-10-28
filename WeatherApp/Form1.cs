@@ -17,18 +17,19 @@ namespace WeatherApp
         public Form1()
         {
             InitializeComponent();
-        }
+            isCelsius = true; // Set Celsius as default
+    }
         string APIKey = "18dede3a5891aa7f0c4f991203e451c0";
-        bool changeUnit = true;
         List<string> searchHistory = new List<string>();
+        double lon;
+        double lat;
+        private bool isCelsius;  // This flag determines the unit (Celsius or Fahrenheit)
         private void btnSearch_Click(object sender, EventArgs e)
         {
             getWeather();
             getForecast();
         }
 
-        double lon;
-        double lat;
         void getWeather()
         {
             using (WebClient web = new WebClient())
@@ -36,7 +37,7 @@ namespace WeatherApp
                 try
                 {
                     //Setting up which unit should be used.
-                    string tempUnit = changeUnit ? "metric" : "imperial";
+                    string tempUnit = isCelsius ? "metric" : "imperial";
 
                     //Initialse variable and use the URL for weather data retrieval
                     //Uses city input from user and API key directly from openweathermap
@@ -54,10 +55,20 @@ namespace WeatherApp
                     labDetails.Text = Info.weather[0].description;
                     labSunset.Text = convertDateTime(Info.sys.sunset).ToShortTimeString();
                     labSunrise.Text = convertDateTime(Info.sys.sunrise).ToShortTimeString();
-                    labWindSpeed.Text = Info.wind.speed.ToString();
-                    labCloud.Text = Info.clouds.all.ToString();
-                    labPressure.Text = Info.main.pressure.ToString();
-                    labTemp.Text = Info.main.temp.ToString();
+
+                    if (isCelsius)
+                    {
+                        labWindSpeed.Text = Info.wind.speed.ToString("0.##") + " m/s";
+                    }
+                    else
+                    {
+                        labWindSpeed.Text = (Info.wind.speed * 2.23694).ToString("0.##") + " mi/h";
+                    }
+
+                    labCloud.Text = Info.clouds.all.ToString() +"%";
+                    labHumidity.Text = Info.main.humidity.ToString() +"%";
+                    labTemp.Text = Math.Round(Info.main.temp).ToString() + (isCelsius ? "°C" : "°F");
+                    labFeelsLike.Text = "Feels Like: " + Math.Round(Info.main.feels_like).ToString() + (isCelsius ? "°C" : "°F");
 
                     lon = Info.coord.lon;
                     lat = Info.coord.lat;
@@ -104,7 +115,7 @@ namespace WeatherApp
                     FUC = new ForecastUC();
                     FUC.picWeatherIcon.ImageLocation = "https://openweathermap.org/img/w/" + ForecastInfo.hourly[i].weather[0].icon + ".png";
                     FUC.labDT.Text = convertDateTime(ForecastInfo.hourly[i].dt).ToString("HH:mm");
-                    FUC.labMainWeather.Text = ForecastInfo.hourly[i].weather[0].main;
+                    FUC.labWindSpeed.Text = ForecastInfo.hourly[i].wind_speed.ToString() + (isCelsius ? " m/s" : " mi/h");
                     FUC.labWeatherDescription.Text = ForecastInfo.hourly[i].weather[0].description;
                     FUC.labTemperature.Text = ForecastInfo.hourly[i].temp.ToString("0.0") + "°C"; 
 
@@ -153,9 +164,37 @@ namespace WeatherApp
 
         private void toggleCtoF_Click(object sender, EventArgs e)
         {
-            //toggle between C and F unit
-            changeUnit = !changeUnit;
-            //Refresh weather data to display the change in unit
+            // Convert the current displayed temperature
+            double currentTemp = Convert.ToDouble(labTemp.Text.Substring(0, labTemp.Text.Length - 2)); // Removes the last two characters (either "°C" or "°F")
+
+            if (isCelsius)
+            {
+                // Convert Celsius to Fahrenheit
+                currentTemp = (currentTemp * 9 / 5) + 32;
+                labTemp.Text = Math.Round(currentTemp).ToString() + "°F";
+            }
+            else
+            {
+                // Convert Fahrenheit to Celsius
+                currentTemp = (currentTemp - 32) * 5 / 9;
+                labTemp.Text = Math.Round(currentTemp).ToString() + "°C";
+            }
+            // Convert wind speed
+            double currentWindSpeed = Convert.ToDouble(labWindSpeed.Text.Split(' ')[0]);
+
+            if (isCelsius)
+            {
+                labWindSpeed.Text = (currentWindSpeed * 2.23694).ToString("0.##") + " mi/h";
+            }
+            else
+            {
+                labWindSpeed.Text = (currentWindSpeed / 2.23694).ToString("0.##") + " m/s";
+            }
+
+            // Toggle the flag
+            isCelsius = !isCelsius;
+
+            // Refresh weather data to display the change in unit
             getWeather();
         }
 
@@ -170,5 +209,6 @@ namespace WeatherApp
             //Display in new window the form
             historyForm.Show();
         }
+
     }
 }

@@ -30,7 +30,7 @@
         {
             this.picWeatherIcon = new System.Windows.Forms.PictureBox();
             this.labDT = new System.Windows.Forms.Label();
-            this.labMainWeather = new System.Windows.Forms.Label();
+            this.labWindSpeed = new System.Windows.Forms.Label();
             this.labWeatherDescription = new System.Windows.Forms.Label();
             this.labTemperature = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picWeatherIcon)).BeginInit();
@@ -47,40 +47,44 @@
             // labDT
             // 
             this.labDT.AutoSize = true;
-            this.labDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labDT.ForeColor = System.Drawing.Color.White;
             this.labDT.Location = new System.Drawing.Point(92, 21);
             this.labDT.Name = "labDT";
-            this.labDT.Size = new System.Drawing.Size(64, 20);
+            this.labDT.Size = new System.Drawing.Size(77, 22);
             this.labDT.TabIndex = 1;
             this.labDT.Text = "Sunday";
             // 
-            // labMainWeather
+            // labWindSpeed
             // 
-            this.labMainWeather.AutoSize = true;
-            this.labMainWeather.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labMainWeather.Location = new System.Drawing.Point(92, 52);
-            this.labMainWeather.Name = "labMainWeather";
-            this.labMainWeather.Size = new System.Drawing.Size(60, 20);
-            this.labMainWeather.TabIndex = 2;
-            this.labMainWeather.Text = "Cloudy";
+            this.labWindSpeed.AutoSize = true;
+            this.labWindSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labWindSpeed.ForeColor = System.Drawing.Color.White;
+            this.labWindSpeed.Location = new System.Drawing.Point(92, 89);
+            this.labWindSpeed.Name = "labWindSpeed";
+            this.labWindSpeed.Size = new System.Drawing.Size(55, 22);
+            this.labWindSpeed.TabIndex = 2;
+            this.labWindSpeed.Text = "Wind";
             // 
             // labWeatherDescription
             // 
             this.labWeatherDescription.AutoSize = true;
-            this.labWeatherDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labWeatherDescription.Location = new System.Drawing.Point(92, 113);
+            this.labWeatherDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labWeatherDescription.ForeColor = System.Drawing.Color.White;
+            this.labWeatherDescription.Location = new System.Drawing.Point(92, 111);
             this.labWeatherDescription.Name = "labWeatherDescription";
-            this.labWeatherDescription.Size = new System.Drawing.Size(95, 20);
+            this.labWeatherDescription.Size = new System.Drawing.Size(111, 22);
             this.labWeatherDescription.TabIndex = 3;
             this.labWeatherDescription.Text = "Description";
             // 
             // labTemperature
             // 
             this.labTemperature.AutoSize = true;
-            this.labTemperature.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labTemperature.Location = new System.Drawing.Point(92, 83);
+            this.labTemperature.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labTemperature.ForeColor = System.Drawing.Color.White;
+            this.labTemperature.Location = new System.Drawing.Point(92, 67);
             this.labTemperature.Name = "labTemperature";
-            this.labTemperature.Size = new System.Drawing.Size(104, 20);
+            this.labTemperature.Size = new System.Drawing.Size(124, 22);
             this.labTemperature.TabIndex = 4;
             this.labTemperature.Text = "Temperature";
             // 
@@ -90,11 +94,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.labTemperature);
             this.Controls.Add(this.labWeatherDescription);
-            this.Controls.Add(this.labMainWeather);
+            this.Controls.Add(this.labWindSpeed);
             this.Controls.Add(this.labDT);
             this.Controls.Add(this.picWeatherIcon);
             this.Name = "ForecastUC";
-            this.Size = new System.Drawing.Size(220, 158);
+            this.Size = new System.Drawing.Size(250, 158);
             ((System.ComponentModel.ISupportInitialize)(this.picWeatherIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -103,7 +107,7 @@
 
         #endregion
 
-        public System.Windows.Forms.Label labMainWeather;
+        public System.Windows.Forms.Label labWindSpeed;
         public System.Windows.Forms.Label labWeatherDescription;
         public System.Windows.Forms.PictureBox picWeatherIcon;
         public System.Windows.Forms.Label labDT;
