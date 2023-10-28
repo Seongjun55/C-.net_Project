@@ -19,15 +19,21 @@ namespace WeatherApp
         {
             InitializeComponent();
             isCelsius = true; // Set Celsius as default
+            //Initial setup for buttons, turn them off
             toggleCtoF.Enabled = false;
             btnViewHistory.Enabled = false;
             btnWeeklyForecast.Enabled = false;
     }
+        //Grab APIkey from openweathermap
         string APIKey = "18dede3a5891aa7f0c4f991203e451c0";
+
+        //Initialise a list that will store user's search
         List<string> searchHistory = new List<string>();
         double lon;
         double lat;
         private bool isCelsius;  // This flag determines the unit (Celsius or Fahrenheit)
+
+        //Call getWeather method when interacted with
         private void btnSearch_Click(object sender, EventArgs e)
         {
             getWeather();
@@ -59,6 +65,7 @@ namespace WeatherApp
                     labSunset.Text = convertDateTime(Info.sys.sunset).ToShortTimeString();
                     labSunrise.Text = convertDateTime(Info.sys.sunrise).ToShortTimeString();
 
+                    //Conversion of the wind speed from metres/s or miles/h
                     if (isCelsius)
                     {
                         labWindSpeed.Text = Info.wind.speed.ToString("0.##") + " m/s";
@@ -67,7 +74,7 @@ namespace WeatherApp
                     {
                         labWindSpeed.Text = (Info.wind.speed * 2.23694).ToString("0.##") + " mi/h";
                     }
-
+                    // Update the UI elements with weather information
                     labCloud.Text = Info.clouds.all.ToString() +"%";
                     labHumidity.Text = Info.main.humidity.ToString() +"%";
                     labTemp.Text = Math.Round(Info.main.temp).ToString() + (isCelsius ? "°C" : "°F");
@@ -80,10 +87,13 @@ namespace WeatherApp
                     weatherPrompts(Info.weather[0].main);
                     string searchedCity = TBCity.Text.ToLower();
 
+                    //Duplicate checking, if a valid city is not already on the list, append it
                     if (!searchHistory.Contains(searchedCity))
                     {
                         searchHistory.Add(searchedCity);
                     }
+
+                    //Enable the buttons if this getWeather is called
                     btnWeeklyForecast.Enabled = true;
                     toggleCtoF.Enabled = true;
                     btnViewHistory.Enabled = true;
@@ -109,6 +119,7 @@ namespace WeatherApp
                 }
             }
         }
+        //Method for the Daily Forecast UI
         void getForecast()
         {
             
@@ -116,21 +127,25 @@ namespace WeatherApp
             {
                 //Clears the existing forecast
                 FLP.Controls.Clear();
-
+                //Loads the data from the link
                 string url = string.Format("https://api.openweathermap.org/data/2.5/onecall?lat={0}&lon={1}&exclude=current,minutely,daily,alerts&appid={2}&units=metric", lat, lon, APIKey);
                 var json = web.DownloadString(url);
                 WeatherForecast.ForecastInfo ForecastInfo = JsonConvert.DeserializeObject<WeatherForecast.ForecastInfo>(json);
 
+                //Create a new instance of User control to display the hourly weather
                 ForecastUC FUC;
+                //Loops over the hourly (10) weather forecast
                 for (int i = 0; i < 11; i++)
                 {
+                    //Create new object of Forecast User Control 
                     FUC = new ForecastUC();
+                    //Set up the required data the User control requires
                     FUC.picWeatherIcon.ImageLocation = "https://openweathermap.org/img/w/" + ForecastInfo.hourly[i].weather[0].icon + ".png";
                     FUC.labDT.Text = convertDateTime(ForecastInfo.hourly[i].dt).ToString("HH:mm");
                     FUC.labWindSpeed.Text = ForecastInfo.hourly[i].wind_speed.ToString() + (isCelsius ? " m/s" : " mi/h");
                     FUC.labWeatherDescription.Text = ForecastInfo.hourly[i].weather[0].description;
                     FUC.labTemperature.Text = ForecastInfo.hourly[i].temp.ToString("0.0") + "°C"; 
-
+                    //FlowLayoutPanel adds the User control into its element
                     FLP.Controls.Add(FUC);
                 }
             }
@@ -224,7 +239,9 @@ namespace WeatherApp
 
         private void btnWeeklyForecast_Click(object sender, EventArgs e)
         {
+            //Create new object of weeklyforecast form
             WeeklyForecast weeklyForecast = new WeeklyForecast();
+            //Display in new window this form
             weeklyForecast.Show();
         }
     }

@@ -34,12 +34,10 @@
             // labWindSpeed
             // 
             this.labWindSpeed.BackColor = System.Drawing.Color.Transparent;
-            this.labWindSpeed.ForeColor = System.Drawing.Color.Black;
             // 
             // labWeatherDescription
             // 
             this.labWeatherDescription.BackColor = System.Drawing.Color.Transparent;
-            this.labWeatherDescription.ForeColor = System.Drawing.Color.Black;
             // 
             // picWeatherIcon
             // 
@@ -48,12 +46,10 @@
             // labDT
             // 
             this.labDT.BackColor = System.Drawing.Color.Transparent;
-            this.labDT.ForeColor = System.Drawing.Color.Black;
             // 
             // labTemperature
             // 
             this.labTemperature.BackColor = System.Drawing.Color.Transparent;
-            this.labTemperature.ForeColor = System.Drawing.Color.Black;
             // 
             // WeeklyForecastUC
             // 
