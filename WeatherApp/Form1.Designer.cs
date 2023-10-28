@@ -202,7 +202,7 @@
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Font = new System.Drawing.Font("Arial", 10F);
             this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(435, 58);
+            this.btnSearch.Location = new System.Drawing.Point(441, 46);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(84, 36);
             this.btnSearch.TabIndex = 18;
@@ -215,7 +215,7 @@
             this.TBCity.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.TBCity.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.TBCity.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TBCity.Location = new System.Drawing.Point(212, 61);
+            this.TBCity.Location = new System.Drawing.Point(193, 48);
             this.TBCity.Name = "TBCity";
             this.TBCity.Size = new System.Drawing.Size(197, 30);
             this.TBCity.TabIndex = 17;
@@ -226,7 +226,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.Window;
-            this.label1.Location = new System.Drawing.Point(156, 63);
+            this.label1.Location = new System.Drawing.Point(103, 46);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 23);
             this.label1.TabIndex = 16;
@@ -298,7 +298,7 @@
             // 
             // btnViewHistory
             // 
-            this.btnViewHistory.Location = new System.Drawing.Point(564, 32);
+            this.btnViewHistory.Location = new System.Drawing.Point(547, 21);
             this.btnViewHistory.Name = "btnViewHistory";
             this.btnViewHistory.Size = new System.Drawing.Size(75, 90);
             this.btnViewHistory.TabIndex = 37;
@@ -309,9 +309,11 @@
             // FLP
             // 
             this.FLP.AutoScroll = true;
-            this.FLP.Location = new System.Drawing.Point(61, 504);
+            this.FLP.BackColor = System.Drawing.Color.Transparent;
+            this.FLP.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.FLP.Location = new System.Drawing.Point(187, 504);
             this.FLP.Name = "FLP";
-            this.FLP.Size = new System.Drawing.Size(561, 125);
+            this.FLP.Size = new System.Drawing.Size(283, 404);
             this.FLP.TabIndex = 38;
             this.FLP.WrapContents = false;
             // 

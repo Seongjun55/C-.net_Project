@@ -94,18 +94,19 @@ namespace WeatherApp
                 //Clears the existing forecast
                 FLP.Controls.Clear();
 
-                string url = string.Format("https://api.openweathermap.org/data/2.5/onecall?lat={0}&lon={1}&exclude=current,minutely,hourly,alerts&appid={2}", lat, lon, APIKey);
+                string url = string.Format("https://api.openweathermap.org/data/2.5/onecall?lat={0}&lon={1}&exclude=current,minutely,daily,alerts&appid={2}&units=metric", lat, lon, APIKey);
                 var json = web.DownloadString(url);
                 WeatherForecast.ForecastInfo ForecastInfo = JsonConvert.DeserializeObject<WeatherForecast.ForecastInfo>(json);
 
                 ForecastUC FUC;
-                for (int i = 0; i < 8; i++)
+                for (int i = 0; i < 11; i++)
                 {
                     FUC = new ForecastUC();
-                    FUC.picWeatherIcon.ImageLocation = "https://openweathermap.org/img/w/" + ForecastInfo.daily[i].weather[0].icon + ".png";
-                    FUC.labDT.Text = convertDateTime(ForecastInfo.daily[i].dt).DayOfWeek.ToString();
-                    FUC.labMainWeather.Text = ForecastInfo.daily[i].weather[0].main;
-                    FUC.labWeatherDescription.Text = ForecastInfo.daily[i].weather[0].description;
+                    FUC.picWeatherIcon.ImageLocation = "https://openweathermap.org/img/w/" + ForecastInfo.hourly[i].weather[0].icon + ".png";
+                    FUC.labDT.Text = convertDateTime(ForecastInfo.hourly[i].dt).ToString("HH:mm");
+                    FUC.labMainWeather.Text = ForecastInfo.hourly[i].weather[0].main;
+                    FUC.labWeatherDescription.Text = ForecastInfo.hourly[i].weather[0].description;
+                    FUC.labTemperature.Text = ForecastInfo.hourly[i].temp.ToString("0.0") + "°C"; 
 
                     FLP.Controls.Add(FUC);
                 }

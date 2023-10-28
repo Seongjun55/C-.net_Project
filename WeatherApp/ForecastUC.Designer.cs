@@ -32,6 +32,7 @@
             this.labDT = new System.Windows.Forms.Label();
             this.labMainWeather = new System.Windows.Forms.Label();
             this.labWeatherDescription = new System.Windows.Forms.Label();
+            this.labTemperature = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picWeatherIcon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -39,7 +40,7 @@
             // 
             this.picWeatherIcon.Location = new System.Drawing.Point(13, 21);
             this.picWeatherIcon.Name = "picWeatherIcon";
-            this.picWeatherIcon.Size = new System.Drawing.Size(73, 82);
+            this.picWeatherIcon.Size = new System.Drawing.Size(73, 112);
             this.picWeatherIcon.TabIndex = 0;
             this.picWeatherIcon.TabStop = false;
             // 
@@ -67,22 +68,33 @@
             // 
             this.labWeatherDescription.AutoSize = true;
             this.labWeatherDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labWeatherDescription.Location = new System.Drawing.Point(92, 83);
+            this.labWeatherDescription.Location = new System.Drawing.Point(92, 113);
             this.labWeatherDescription.Name = "labWeatherDescription";
             this.labWeatherDescription.Size = new System.Drawing.Size(95, 20);
             this.labWeatherDescription.TabIndex = 3;
             this.labWeatherDescription.Text = "Description";
             // 
+            // labTemperature
+            // 
+            this.labTemperature.AutoSize = true;
+            this.labTemperature.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labTemperature.Location = new System.Drawing.Point(92, 83);
+            this.labTemperature.Name = "labTemperature";
+            this.labTemperature.Size = new System.Drawing.Size(104, 20);
+            this.labTemperature.TabIndex = 4;
+            this.labTemperature.Text = "Temperature";
+            // 
             // ForecastUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.labTemperature);
             this.Controls.Add(this.labWeatherDescription);
             this.Controls.Add(this.labMainWeather);
             this.Controls.Add(this.labDT);
             this.Controls.Add(this.picWeatherIcon);
             this.Name = "ForecastUC";
-            this.Size = new System.Drawing.Size(220, 124);
+            this.Size = new System.Drawing.Size(220, 158);
             ((System.ComponentModel.ISupportInitialize)(this.picWeatherIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -95,5 +107,6 @@
         public System.Windows.Forms.Label labWeatherDescription;
         public System.Windows.Forms.PictureBox picWeatherIcon;
         public System.Windows.Forms.Label labDT;
+        public System.Windows.Forms.Label labTemperature;
     }
 }
