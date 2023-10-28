@@ -71,6 +71,18 @@
     </Compile>
     <Compile Include="WeatherForecast.cs" />
     <Compile Include="WeatherInfo.cs" />
+    <Compile Include="WeeklyForecast.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WeeklyForecast.Designer.cs">
+      <DependentUpon>WeeklyForecast.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WeeklyForecastUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WeeklyForecastUC.Designer.cs">
+      <DependentUpon>WeeklyForecastUC.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ForecastUC.resx">
       <DependentUpon>ForecastUC.cs</DependentUpon>
     </EmbeddedResource>
@@ -85,9 +97,16 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="SearchHistoryForm.resx">
       <DependentUpon>SearchHistoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WeeklyForecast.resx">
+      <DependentUpon>WeeklyForecast.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WeeklyForecastUC.resx">
+      <DependentUpon>WeeklyForecastUC.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -102,6 +121,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\forecastbg.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

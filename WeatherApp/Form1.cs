@@ -14,10 +14,14 @@ namespace WeatherApp
 {
     public partial class Form1 : Form
     {
+        
         public Form1()
         {
             InitializeComponent();
             isCelsius = true; // Set Celsius as default
+            toggleCtoF.Enabled = false;
+            btnViewHistory.Enabled = false;
+            btnWeeklyForecast.Enabled = false;
     }
         string APIKey = "18dede3a5891aa7f0c4f991203e451c0";
         List<string> searchHistory = new List<string>();
@@ -27,7 +31,6 @@ namespace WeatherApp
         private void btnSearch_Click(object sender, EventArgs e)
         {
             getWeather();
-            getForecast();
         }
 
         void getWeather()
@@ -81,7 +84,10 @@ namespace WeatherApp
                     {
                         searchHistory.Add(searchedCity);
                     }
-
+                    btnWeeklyForecast.Enabled = true;
+                    toggleCtoF.Enabled = true;
+                    btnViewHistory.Enabled = true;
+                    getForecast();
                 }
 
                 // Checking valid city from API
@@ -89,11 +95,17 @@ namespace WeatherApp
                 {
                     // City not found on the API's server
                     MessageBox.Show("City not found. Please ensure you've entered a valid city name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    toggleCtoF.Enabled = false;
+                    btnViewHistory.Enabled = false;
+                    btnWeeklyForecast.Enabled = false;
                 }
                 catch (Exception ex)
                 {
                     // Other general errors
                     MessageBox.Show("An error occurred while fetching the weather data. Please try again later.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    toggleCtoF.Enabled = false;
+                    btnViewHistory.Enabled = false;
+                    btnWeeklyForecast.Enabled = false;
                 }
             }
         }
@@ -210,5 +222,10 @@ namespace WeatherApp
             historyForm.Show();
         }
 
+        private void btnWeeklyForecast_Click(object sender, EventArgs e)
+        {
+            WeeklyForecast weeklyForecast = new WeeklyForecast();
+            weeklyForecast.Show();
+        }
     }
 }
