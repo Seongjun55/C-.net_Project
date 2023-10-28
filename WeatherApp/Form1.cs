@@ -169,6 +169,5 @@ namespace WeatherApp
             //Display in new window the form
             historyForm.Show();
         }
-
     }
 }
