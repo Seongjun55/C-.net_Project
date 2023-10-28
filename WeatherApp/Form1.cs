@@ -88,8 +88,12 @@ namespace WeatherApp
         }
         void getForecast()
         {
+            
             using (WebClient web = new WebClient())
             {
+                //Clears the existing forecast
+                FLP.Controls.Clear();
+
                 string url = string.Format("https://api.openweathermap.org/data/2.5/onecall?lat={0}&lon={1}&exclude=current,minutely,hourly,alerts&appid={2}", lat, lon, APIKey);
                 var json = web.DownloadString(url);
                 WeatherForecast.ForecastInfo ForecastInfo = JsonConvert.DeserializeObject<WeatherForecast.ForecastInfo>(json);
