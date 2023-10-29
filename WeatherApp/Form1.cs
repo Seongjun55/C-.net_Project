@@ -239,8 +239,8 @@ namespace WeatherApp
 
         private void btnWeeklyForecast_Click(object sender, EventArgs e)
         {
-            //Create new object of weeklyforecast form
-            WeeklyForecast weeklyForecast = new WeeklyForecast();
+            //Create new object of weeklyforecast form, pass lon and lat aswell
+            WeeklyForecast weeklyForecast = new WeeklyForecast(lon, lat);
             //Display in new window this form
             weeklyForecast.Show();
         }
