@@ -7,10 +7,10 @@ using static WeatherApp.WeatherForecast;
 
 namespace WeatherApp
 {
-    class WeatherForecast
+    class WeatherForecast // API response for Forecastdata
     {
 
-        public class daily
+        public class daily // Response by daily call
         {
             public long dt { get; set; }
             public Temp temp { get; set; }
@@ -27,7 +27,7 @@ namespace WeatherApp
             public double eve { get; set; }
             public double morn { get; set; }
         }
-        public class hourly
+        public class hourly // Response by hourly call
         {
             public long dt { get; set; }
             public double temp { get; set; }
@@ -46,7 +46,6 @@ namespace WeatherApp
         {
             public List<hourly> hourly { get; set; }
             public List<daily> daily { get; set; }
-            
             public List<Temp> temp { get; set; }
         }
     }

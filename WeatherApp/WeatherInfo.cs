@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WeatherApp
+namespace WeatherApp // API Response for current data 
 {
     class WeatherInfo
     {

@@ -34,22 +34,21 @@
             // lstSearchHistory
             // 
             this.lstSearchHistory.FormattingEnabled = true;
-            this.lstSearchHistory.Location = new System.Drawing.Point(64, 48);
-            this.lstSearchHistory.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.lstSearchHistory.ItemHeight = 15;
+            this.lstSearchHistory.Location = new System.Drawing.Point(85, 55);
             this.lstSearchHistory.Name = "lstSearchHistory";
-            this.lstSearchHistory.Size = new System.Drawing.Size(91, 134);
+            this.lstSearchHistory.Size = new System.Drawing.Size(120, 154);
             this.lstSearchHistory.TabIndex = 0;
             this.lstSearchHistory.SelectedIndexChanged += new System.EventHandler(this.lstSearchHistory_SelectedIndexChanged);
             // 
             // SearchHistoryForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(220, 251);
+            this.ClientSize = new System.Drawing.Size(293, 290);
             this.Controls.Add(this.lstSearchHistory);
-            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "SearchHistoryForm";
-            this.Text = "SearchHistoryForm";
+            this.Text = "History";
             this.ResumeLayout(false);
 
         }

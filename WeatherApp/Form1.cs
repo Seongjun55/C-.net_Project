@@ -19,6 +19,7 @@ namespace WeatherApp
         {
             InitializeComponent();
             isCelsius = true; // Set Celsius as default
+
             //Initial setup for buttons, turn them off
             toggleCtoF.Enabled = false;
             btnViewHistory.Enabled = false;
@@ -39,7 +40,7 @@ namespace WeatherApp
             getWeather();
         }
 
-        void getWeather()
+        void getWeather() // Call current weather data
         {
             using (WebClient web = new WebClient())
             {
@@ -79,6 +80,7 @@ namespace WeatherApp
                     labTemp.Text = Math.Round(Info.main.temp).ToString() + (isCelsius ? "°C" : "°F");
                     labFeelsLike.Text = "Feels Like: " + Math.Round(Info.main.feels_like).ToString() + (isCelsius ? "°C" : "°F");
 
+                    //Setup for longitude and latitude
                     lon = Info.coord.lon;
                     lat = Info.coord.lat;
 
@@ -126,6 +128,7 @@ namespace WeatherApp
             {
                 //Clears the existing forecast
                 FLP.Controls.Clear();
+
                 //Loads the data from the link
                 string url = string.Format("https://api.openweathermap.org/data/2.5/onecall?lat={0}&lon={1}&exclude=current,minutely,daily,alerts&appid={2}&units=metric", lat, lon, APIKey);
                 var json = web.DownloadString(url);
@@ -133,6 +136,7 @@ namespace WeatherApp
 
                 //Create a new instance of User control to display the hourly weather
                 ForecastUC FUC;
+
                 //Loops over the hourly (10) weather forecast
                 for (int i = 0; i < 11; i++)
                 {
@@ -151,6 +155,7 @@ namespace WeatherApp
                     }
                     FUC.labWeatherDescription.Text = ForecastInfo.hourly[i].weather[0].description;
                     FUC.labTemperature.Text = ForecastInfo.hourly[i].temp.ToString("0.0") + "°C"; 
+
                     //FlowLayoutPanel adds the User control into its element
                     FLP.Controls.Add(FUC);
                 }
@@ -187,9 +192,10 @@ namespace WeatherApp
             }
         }
 
+
         DateTime convertDateTime(long sec)
         {
-            DateTime day = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc).ToLocalTime();
+            DateTime day = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc).ToLocalTime(); // Creating the base date time object
             day = day.AddSeconds(sec).ToLocalTime();
 
             return day;
@@ -212,7 +218,7 @@ namespace WeatherApp
                 currentTemp = (currentTemp - 32) * 5 / 9;
                 labTemp.Text = Math.Round(currentTemp).ToString() + "°C";
             }
-            // Convert wind speed
+            // Convert wind speed scale
             double currentWindSpeed = Convert.ToDouble(labWindSpeed.Text.Split(' ')[0]);
 
             if (isCelsius)
