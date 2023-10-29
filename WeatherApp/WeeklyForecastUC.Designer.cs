@@ -46,16 +46,23 @@
             // labDT
             // 
             this.labDT.BackColor = System.Drawing.Color.Transparent;
+            this.labDT.ForeColor = System.Drawing.Color.White;
             // 
             // labTemperature
             // 
             this.labTemperature.BackColor = System.Drawing.Color.Transparent;
+            this.labTemperature.Size = new System.Drawing.Size(129, 22);
+            this.labTemperature.Text = "Main weather";
+            this.labTemperature.Click += new System.EventHandler(this.labTemperature_Click);
             // 
             // WeeklyForecastUC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.BackgroundImage = global::WeatherApp.Properties.Resources.forecastbg;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "WeeklyForecastUC";
+            this.Size = new System.Drawing.Size(305, 158);
             ((System.ComponentModel.ISupportInitialize)(this.picWeatherIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

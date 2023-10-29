@@ -14,5 +14,10 @@ namespace WeatherApp
         {
             InitializeComponent();
         }
+
+        private void labTemperature_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -51,8 +51,8 @@ namespace WeatherApp
                         //Set up the required data the User control requires
                         wkFUC.picWeatherIcon.ImageLocation = "https://openweathermap.org/img/w/" + ForecastInfo.daily[i].weather[0].icon + ".png";
                         wkFUC.labDT.Text = convertDateTime(ForecastInfo.daily[i].dt).DayOfWeek.ToString();
-                        wkFUC.labTemperature.Text = ForecastInfo.daily[i].weather[0].main.ToString();
-                        wkFUC.labWindSpeed.Text = ForecastInfo.daily[i].wind_speed.ToString() + " m/s";
+                        wkFUC.labTemperature.Text = "Main weather: " + ForecastInfo.daily[i].weather[0].main.ToString();
+                        wkFUC.labWindSpeed.Text = "Wind speed: "+ ForecastInfo.daily[i].wind_speed.ToString() + " m/s";
                         wkFUC.labWeatherDescription.Text = ForecastInfo.daily[i].weather[0].description;
                         //FlowLayoutPanel adds the User control into its element
                         weeklyFLP.Controls.Add(wkFUC);

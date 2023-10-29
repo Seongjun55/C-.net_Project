@@ -64,7 +64,6 @@ namespace WeatherApp
                     labDetails.Text = Info.weather[0].description;
                     labSunset.Text = convertDateTime(Info.sys.sunset).ToShortTimeString();
                     labSunrise.Text = convertDateTime(Info.sys.sunrise).ToShortTimeString();
-
                     //Conversion of the wind speed from metres/s or miles/h
                     if (isCelsius)
                     {
@@ -142,7 +141,14 @@ namespace WeatherApp
                     //Set up the required data the User control requires
                     FUC.picWeatherIcon.ImageLocation = "https://openweathermap.org/img/w/" + ForecastInfo.hourly[i].weather[0].icon + ".png";
                     FUC.labDT.Text = convertDateTime(ForecastInfo.hourly[i].dt).ToString("HH:mm");
-                    FUC.labWindSpeed.Text = ForecastInfo.hourly[i].wind_speed.ToString() + (isCelsius ? " m/s" : " mi/h");
+                    if (isCelsius)
+                    {
+                        FUC.labWindSpeed.Text = ForecastInfo.hourly[i].wind_speed.ToString("0.##") + " m/s";
+                    }
+                    else
+                    {
+                        FUC.labWindSpeed.Text = (ForecastInfo.hourly[i].wind_speed * 2.23694).ToString("0.##") + " mi/h";
+                    }
                     FUC.labWeatherDescription.Text = ForecastInfo.hourly[i].weather[0].description;
                     FUC.labTemperature.Text = ForecastInfo.hourly[i].temp.ToString("0.0") + "°C"; 
                     //FlowLayoutPanel adds the User control into its element
@@ -159,7 +165,7 @@ namespace WeatherApp
                     labWeatherPrompt.Text = "Beautiful day to go outside!";
                     break;
                 case "clouds":
-                    labWeatherPrompt.Text = "Perfect day to go outside!";
+                    labWeatherPrompt.Text = "Good day to go outside but Cloudy today!";
                     break;
                 case "rain":
                     labWeatherPrompt.Text = "Bring an Umbrella!, chances of rain is high!";
@@ -221,8 +227,7 @@ namespace WeatherApp
             // Toggle the flag
             isCelsius = !isCelsius;
 
-            // Refresh weather data to display the change in unit
-            getWeather();
+            getForecast();
         }
 
         //Open the History of Search
