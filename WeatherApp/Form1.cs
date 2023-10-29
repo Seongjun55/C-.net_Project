@@ -65,6 +65,7 @@ namespace WeatherApp
                     labDetails.Text = Info.weather[0].description;
                     labSunset.Text = convertDateTime(Info.sys.sunset).ToShortTimeString();
                     labSunrise.Text = convertDateTime(Info.sys.sunrise).ToShortTimeString();
+
                     //Conversion of the wind speed from metres/s or miles/h
                     if (isCelsius)
                     {
@@ -174,10 +175,9 @@ namespace WeatherApp
                     break;
                 case "rain":
                     labWeatherPrompt.Text = "Bring an Umbrella!, chances of rain is high!";
-
                     break;
                 case "thunderstorm":
-                    labWeatherPrompt.Text = "Beware of thunderstorms!, chances of rain is present.";
+                    labWeatherPrompt.Text = "Beware of thunderstorms!, Refrain from going out.";
                     break;
                 case "snow":
                     labWeatherPrompt.Text = "Wear thick clothing today, i-it'll b-be c-cold t-today!";
