@@ -51,6 +51,7 @@ namespace WeatherApp
                         //Set up the required data the User control requires
                         wkFUC.picWeatherIcon.ImageLocation = "https://openweathermap.org/img/w/" + ForecastInfo.daily[i].weather[0].icon + ".png";
                         wkFUC.labDT.Text = convertDateTime(ForecastInfo.daily[i].dt).DayOfWeek.ToString();
+                        wkFUC.labRealTemp.Text = "Avg.Temp: " + ForecastInfo.daily[i].temp.day.ToString("0.0") + "°C";
                         wkFUC.labTemperature.Text = "Main weather: " + ForecastInfo.daily[i].weather[0].main.ToString();
                         wkFUC.labWindSpeed.Text = "Wind speed: "+ ForecastInfo.daily[i].wind_speed.ToString() + " m/s";
                         wkFUC.labWeatherDescription.Text = ForecastInfo.daily[i].weather[0].description;

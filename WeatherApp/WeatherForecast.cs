@@ -13,9 +13,19 @@ namespace WeatherApp
         public class daily
         {
             public long dt { get; set; }
+            public Temp temp { get; set; }
             public List<weather> weather { get; set; }
             public double wind_speed { get; set; }
 
+        }
+        public class Temp
+        {
+            public double day { get; set; }
+            public double min { get; set; }
+            public double max { get; set; }
+            public double night { get; set; }
+            public double eve { get; set; }
+            public double morn { get; set; }
         }
         public class hourly
         {
@@ -36,6 +46,8 @@ namespace WeatherApp
         {
             public List<hourly> hourly { get; set; }
             public List<daily> daily { get; set; }
+            
+            public List<Temp> temp { get; set; }
         }
     }
 }
